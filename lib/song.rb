@@ -1,4 +1,6 @@
 
+
+
 class Song
 
   attr_accessor :name, :artist, :genre
@@ -20,11 +22,19 @@ class Song
     @@artist_count[@artist] = @@artists.count(@artist)
   end
 
-  # def genre_count
-  #
-  #    @@genres.group_by{|x| x}.keep_if{|_, x| x.length > 1}
-  #
-  # end
+  def genre_count
+
+     @@genres.group_by do |x|
+        x
+      end
+
+    z =  @@genres.map do |k,v|
+        @@genres[k] = v.length
+      end
+
+    return z
+
+  end
 
 
   def self.count
